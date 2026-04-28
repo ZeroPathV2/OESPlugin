@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="OESPlugin/OESPlugin.csproj" Id="20c69604-3c33-4dc2-91aa-ac3e2c01d42c">
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="Debug|Any CPU" Project="x64" />
+  </Project>
+</Solution>
