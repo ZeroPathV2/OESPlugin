@@ -35,17 +35,19 @@ namespace OESPlugin.Models.Drawings
 
         public Polyline BuildPolyline(IBeamModel s)
         {
-            double D = s.Depth;
+            
             double W = s.Width;
             double tw = s.WebThickness;
             double tf = s.FlangeThickness;
             double r = s.RootRadius;
 
+            double D = 2 * tf + s.DepthBetweenFillets + 2 * r;
+
             double halfB = W / 2.0;
             double halfD = D / 2.0;
             double halfTw = tw / 2.0;
 
-            double b = -0.4142;
+            double b = Math.Tan(Math.PI / 8.0); // 0.4142
 
             var pl = new Polyline();
             int i = 0;
@@ -56,14 +58,14 @@ namespace OESPlugin.Models.Drawings
             pl.AddVertexAt(i++, new Point2d(-halfB, halfD - tf), 0, 0, 0);
 
          
-            pl.AddVertexAt(i++, new Point2d(-halfTw - r, halfD - tf), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(-halfTw - r, halfD - tf), -b, 0, 0);
             pl.AddVertexAt(i++, new Point2d(-halfTw, halfD - tf - r), 0, 0, 0);
 
       
             pl.AddVertexAt(i++, new Point2d(-halfTw, -halfD + tf + r), 0, 0, 0);
 
         
-            pl.AddVertexAt(i++, new Point2d(-halfTw, -halfD + tf + r), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(-halfTw, -halfD + tf + r), -b, 0, 0);
             pl.AddVertexAt(i++, new Point2d(-halfTw - r, -halfD + tf), 0, 0, 0);
 
          
@@ -73,14 +75,14 @@ namespace OESPlugin.Models.Drawings
             pl.AddVertexAt(i++, new Point2d(halfB, -halfD + tf), 0, 0, 0);
 
          
-            pl.AddVertexAt(i++, new Point2d(halfTw + r, -halfD + tf), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(halfTw + r, -halfD + tf), -b, 0, 0);
             pl.AddVertexAt(i++, new Point2d(halfTw, -halfD + tf + r), 0, 0, 0);
 
          
             pl.AddVertexAt(i++, new Point2d(halfTw, halfD - tf - r), 0, 0, 0);
 
           
-            pl.AddVertexAt(i++, new Point2d(halfTw, halfD - tf - r), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(halfTw, halfD - tf - r), -b, 0, 0);
             pl.AddVertexAt(i++, new Point2d(halfTw + r, halfD - tf), 0, 0, 0);
 
           
