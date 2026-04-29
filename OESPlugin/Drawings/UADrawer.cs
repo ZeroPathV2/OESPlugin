@@ -44,7 +44,7 @@ namespace OESPlugin.Drawings
             double rr = s.RadiusRoot;
             double rt = s.RadiusToe;
 
-            double b = -0.4142;
+            double b = Math.Tan(Math.PI / 8.0); // 0.4142
 
             var pl = new Polyline();
             int i = 0;
@@ -56,19 +56,19 @@ namespace OESPlugin.Drawings
             pl.AddVertexAt(i++, new Point2d(B , A), 0, 0, 0);
 
             
-            pl.AddVertexAt(i++, new Point2d(B , 0), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(B , 0), -b, 0, 0);
 
             
             pl.AddVertexAt(i++, new Point2d(B - t, rt), 0, 0, 0);
 
             
-            pl.AddVertexAt(i++, new Point2d(B - t, A - t - rr), -b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(B - t, A - t - rr), b, 0, 0);
 
             
             pl.AddVertexAt(i++, new Point2d(B - t - rr, A - t), 0, 0, 0);
 
             
-            pl.AddVertexAt(i++, new Point2d(rt, A - t), b, 0, 0);
+            pl.AddVertexAt(i++, new Point2d(rt, A - t), -b, 0, 0);
 
             pl.Closed = true;
 
