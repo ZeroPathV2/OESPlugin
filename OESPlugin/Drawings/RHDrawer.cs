@@ -62,7 +62,7 @@ namespace OESPlugin.Drawings
             double hH = H / 2.0;
             double hW = W / 2.0;
 
-            double b = 0.4142;
+            double b = Math.Tan(Math.PI / 8.0); // 0.4142
 
             var pl = new Polyline();
             int i = 0;
